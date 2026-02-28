@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catatan Kuliah - Keseimbangan Asam-Basa & Gizi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: 210mm 330mm;
+            margin: 15mm;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(135deg, #E8F4F8 0%, #FFF0F5 25%, #F0FFF0 50%, #FFF8DC 75%, #F5F5DC 100%);
+            min-height: 100vh;
+            padding: 10px;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 330mm;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+        
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 20 Q60 10 70 20 Q80 30 70 40 Q60 50 50 40 Q40 50 30 40 Q20 30 30 20 Q40 10 50 20' fill='%23FFB6C1' opacity='0.08'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='8' fill='%2387CEEB' opacity='0.06'/%3E%3Ccircle cx='80' cy='80' r='12' fill='%2390EE90' opacity='0.06'/%3E%3C/svg%3E");
+            background-size: 120px 120px, 200px 200px;
+            pointer-events: none;
+        }
+        
+        .cinnamoroll-deco {
+            position: absolute;
+            width: 60px;
+            height: 45px;
+            background: #FFF;
+            border-radius: 50% 50% 45% 45%;
+            box-shadow: 
+                -20px 8px 0 -3px #FFF,
+                20px 8px 0 -3px #FFF,
+                0 15px 0 -8px #E8F4F8;
+            opacity: 0.7;
+        }
+        
+        .cinnamoroll-deco::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 15px;
+            width: 6px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+            box-shadow: 24px 0 0 #333;
+        }
+        
+        .cinnamoroll-deco::after {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 22px;
+            width: 16px;
+            height: 8px;
+            background: #FFB6C1;
+            border-radius: 0 0 50% 50%;
+        }
+        
+        .flower-deco {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: 
+                radial-gradient(circle at 50% 20%, #FF69B4 25%, transparent 25%),
+                radial-gradient(circle at 80% 50%, #FF1493 25%, transparent 25%),
+                radial-gradient(circle at 50% 80%, #FF69B4 25%, transparent 25%),
+                radial-gradient(circle at 20% 50%, #FF1493 25%, transparent 25%);
+            opacity: 0.5;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 25px 20px 15px;
+            background: linear-gradient(180deg, rgba(255,182,193,0.25) 0%, rgba(255,255,255,0) 100%);
+            position: relative;
+            border-bottom: 3px double #FFB6C1;
+        }
+        
+        .header .flower-deco { top: 15px; left: 30px; }
+        .header .cinnamoroll-deco { top: 10px; right: 40px; transform: scale(0.9); }
+        
+        h1.main-title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #2C3E50;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 12pt;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .content {
+            padding: 15px 25px;
+            column-count: 2;
+            column-gap: 25px;
+            column-rule: 2px dotted #FFB6C1;
+            text-align: justify;
+            line-height: 1.35;
+            font-size: 12pt;
+        }
+        
+        h2 {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #2C3E50;
+            margin: 12px 0 8px 0;
+            break-after: avoid;
+            border-bottom: 2px solid #87CEEB;
+            padding-bottom: 3px;
+            column-span: all;
+            text-align: center;
+            background: rgba(135,206,235,0.1);
+        }
+        
+        h3 {
+            font-size: 12pt;
+            font-weight: normal;
+            color: #34495E;
+            margin: 10px 0 5px 0;
+            font-style: italic;
+            break-after: avoid;
+            border-left: 4px solid #FFB6C1;
+            padding-left: 8px;
+        }
+        
+        p {
+            margin-bottom: 6px;
+            text-indent: 20px;
+        }
+        
+        p.no-indent {
+            text-indent: 0;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        li {
+            margin-bottom: 3px;
+            text-align: justify;
+        }
+        
+        .formula-box {
+            background: rgba(255, 182, 193, 0.12);
+            border: 1px solid #FFB6C1;
+            border-radius: 8px;
+            padding: 8px;
+            margin: 8px 0;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .highlight {
+            background: rgba(144, 238, 144, 0.2);
+            padding: 1px 3px;
+            border-radius: 3px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 11pt;
+            break-inside: avoid;
+            border: 2px solid #87CEEB;
+        }
+        
+        th {
+            background: rgba(135, 206, 235, 0.3);
+            font-weight: bold;
+            border: 1px solid #87CEEB;
+            padding: 6px;
+            text-align: center;
+        }
+        
+        td {
+            border: 1px solid #DDD;
+            padding: 5px;
+            text-align: left;
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(255, 182, 193, 0.05);
+        }
+        
+        .section-divider {
+            column-span: all;
+            text-align: center;
+            margin: 15px 0;
+            color: #FFB6C1;
+            font-size: 14pt;
+            letter-spacing: 10px;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 25px;
+            font-size: 10pt;
+            color: #999;
+            font-style: italic;
+        }
+        
+        .small-cinna {
+            display: inline-block;
+            width: 20px;
+            height: 15px;
+            background: #FFF;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 3px;
+            box-shadow: -5px 2px 0 -1px #FFF, 5px 2px 0 -1px #FFF;
+            vertical-align: middle;
+            opacity: 0.6;
+        }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .page { 
+                box-shadow: none; 
+                margin: 0;
+                page-break-after: always;
+            }
+            .page:last-child { page-break-after: auto; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- HALAMAN 1 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">GANGGUAN KESEIMBANGAN ASAM-BASA</h1>
+            <p class="subtitle">Dalam Tubuh Manusia | Materi Kuliah Keperawatan</p>
+        </div>
+        
+        <div class="content">
+            <h2>Definisi dan Prinsip Asam-Basa</h2>
+            
+            <p>Menurut Bronsted, disebut asam jika zat tersebut sebagai donatur ion H+ dan disebut basa bila zat tersebut akseptor ion H+</p>
+            
+            <p class="no-indent">Ada 2 jenis asam dalam peredaran darah manusia yang penting untuk metabolisme, yaitu :</p>
+            <ol>
+                <li>Asam Karbonat (H2CO3)</li>
+                <li>Asam Non-Karbonat (Asam Non-Volatile) → sebagian besar adalah Asam Sulfat (H2SO4)</li>
+            </ol>
+            
+            <p>Hasil metabolisme karbohidrat dan protein dalam tubuh → 15.000mmol CO2, yang akan bergabung dengan H2O → H2CO3</p>
+            
+            <h3>Pendahuluan</h3>
+            <p>Gangguan asam-basa dalam tubuh manusia tidak jarang kita temukan dalam klinik, baik kasus yang ringan maupun berat</p>
+            
+            <p class="no-indent">Dalam evaluasi gangguan keseimbangan asam-basa dikenal 3 metoda yang biasa dipakai, yaitu :</p>
+            <ol>
+                <li>Metoda Boston (Tradisional) → terbanyak dipakai di dunia kedokteran Indonesia ⇨ akan kita bahas</li>
+                <li>Metoda Copenhagen (Base-Excess)</li>
+                <li>Metoda Stewart (Fisikokimia=Quantitative Strong Ion=Prinsip Elektronetralitas) → terbanyak dipakai oleh para anestesiologis/intensivis</li>
+            </ol>
+            
+            <h3>Pengaturan Keseimbangan Asam Basa</h3>
+            <p>Ginjal dan paru merupakan pemegang peran utama</p>
+            
+            <p>CO2 akan diekskresikan oleh paru, sedangkan Asam Non-Volatile diekskresikan melalui ginjal → asam ini merupakan kombinasi Ion H+ dengan asam yang tertitrasikan (titratable acid) yakni Fosfat+Amonia</p>
+            
+            <p>HCO3- yang dihasilkan dari reaksi H2O+CO2 merupakan penyangga (buffer) utama sebagai pengikat ion H+ dalam keseimbangan asam-basa dalam tubuh. Reaksinya :</p>
+            
+            <div class="formula-box">
+                H2O + CO2 ⇌ H+ + HCO3-<br>
+                (reaksi ke kanan-kiri punya kekuatan yang sama)
+            </div>
+            
+            <h3>Rumus Henderson-Hasselbalch</h3>
+            <div class="formula-box">
+                [H+] = 24 x pCO2 / [HCO3-]
+            </div>
+            
+            <p>Rumus ini berlaku pada asam lemah (asam yang berdisosiasi tdk lengkap).</p>
+            
+            <p>Kadar ion H+ atau keadaan asam basa dipengaruhi oleh rasio pCO2 & kadar HCO3</p>
+            
+            <p>Pengaturan keseimbangan asam basa dipengaruhi oleh keadaan ion H+ dalam cairan ekstraselular</p>
+            
+            <p>Ikatan ion H+ terhadap muatan negatif (terutama protein) sangat kuat sehingga peningkatannya sangat mempengaruhi protein & struktur sel</p>
+            
+            <h3>Cara mengetahui nilai ion H+ pada Astrup</h3>
+            <p class="no-indent">Dapat dilakukan dengan konversi sebagai berikut :</p>
+            <ol>
+                <li>Pada pH=7,0 ⇨ [H+] = 100 nmol/L</li>
+                <li>Setiap ⇧pH 0,1 dari 7,0 ⇨[H+] x0,8 dari 100 dan terus setiap ⇧pH 0,1 berikutnya</li>
+                <li>Setiap ⇩pH 0,1 dari 7,0 ⇨[H+] x 1,25 dari 100 dan terus setiap ⇩pH 0,1 berikutnya</li>
+            </ol>
+            
+            <p class="no-indent">Contoh : pH=7,1 ⇨ [H+]=0,8 x 100nmol/L<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pH=7,2 ⇨ [H+]=0,8 x 0,8 x 100nmol/L<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pH=6,9 ⇨ [H+]=1,25 x 100nmol/L<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pH=6,8 ⇨ [H+]=1,25 x 1,25 x 100nmol/L</p>
+        </div>
+        <div class="page-number">1</div>
+    </div>
+
+    <!-- HALAMAN 2 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">KLASIFIKASI GANGGUAN ASAM BASA</h1>
+            <p class="subtitle">Metode Boston & Kompensasi</p>
+        </div>
+        
+        <div class="content">
+            <h2>Klasifikasi Gangguan Asam Basa</h2>
+            
+            <h3>I. GANGGUAN ASAM BASA METABOLIK</h3>
+            <ul>
+                <li>Asidosis metabolik</li>
+                <li>Alkalosis metabolik</li>
+            </ul>
+            
+            <h3>II. GANGGUAN ASAM BASA RESPIRATORIK</h3>
+            <ul>
+                <li>Asidosis respiratorik</li>
+                <li>Alkalosis respiratorik</li>
+            </ul>
+            
+            <p>Gangguan asam basa metabolik dikompensasi oleh paru. Kompensasi ini berlangsung cepat (pada 1 jam pertama hingga lengkap pada jam ke-12 hingga jam ke-24.</p>
+            
+            <p>Gangguan asam basa respiratorik dikompensasi oleh ginjal. Kompensasi ini berlangsung lambat (5-6 hari) ⇨ terbagi 2 : gangguan asam basa respiratotik akut dan kronik. Pada asam basa respiratoris akut : belum terlihat perubahan [HCO3-] sedangkan pada yang kronik : sudah ada perubahan HCO3.</p>
+            
+            <h3>Gangguan Asam Basa Simpleks/Sederhana dan Kompleks/Campuran</h3>
+            <p><span class="highlight">Gangguan Asam Basa Sederhana:</span> mengikuti aturan kompensasi yang berlaku</p>
+            <p><span class="highlight">Gangguan Asam Basa Kompleks:</span> tidak mengikuti aturan kompensasi yang berlaku.</p>
+            
+            <h3>Aturan Kompensasi Baku</h3>
+            <table>
+                <tr><th>Parameter</th><th>Nilai Normal</th></tr>
+                <tr><td>pH</td><td>7,40</td></tr>
+                <tr><td>pCO2</td><td>40 mmHg</td></tr>
+                <tr><td>[HCO3-]</td><td>21 mEq/L</td></tr>
+            </table>
+            
+            <h3>Gangguan Asam-Basa Sederhana</h3>
+            
+            <p><strong>Asidosis Metabolik</strong> (pH<7,4), setiap [HCO3-] ⇩1 mEq/L → pCO2 ⇩ 1,2 mmHg</p>
+            
+            <p><strong>Alkalosis Metabolik</strong> (pH>7,4), setiap [HCO3-] ⇧ 1 mEq/L → pCO2 ⇧ 1,2 mmHg</p>
+            
+            <p><strong>Asidosis Respiratorik</strong> (pH <7,4), setiap pCO2 ⇧→ [HCO3-] akan ⇧</p>
+            <ul>
+                <li>Akut : ⇧10 mmHg → ⇧ 1,0 mEq/L</li>
+                <li>Kronik : ⇧10 mmHg → ⇧ 3,5 mEq/L</li>
+            </ul>
+            
+            <p><strong>Alkalosis Respiratorik</strong> (pH>7,4), setiap pCO2 ⇩ → [HCO3-] akan ⇩</p>
+            <ul>
+                <li>Akut : ⇩10 mmHg → ⇩ 2,0 mEq/L</li>
+                <li>Kronik : ⇩10 mmHg → ⇩ 4,0 mEq/L</li>
+            </ul>
+            
+            <div class="section-divider">❀ ❀ ❀</div>
+            
+            <h2>Anion Gap (AG)</h2>
+            
+            <div class="formula-box">
+                AG Darah : Na+ - (HCO3- + Cl-)<br>
+                Normal : 7 – 13 mEq/L
+            </div>
+            
+            <p>Dipengaruhi oleh muatan negatif (protein) → bila albumin ⇩ 1 g/L maka AG ⇩ 2,5 mEq/L</p>
+            
+            <p>Anion yang tidak dapat diukur (Albumin, Asam Organik) – Kation yang tidak dapat terukur (Kalsium, Magnesium)</p>
+            
+            <p>Bila AG darah normal → periksa AG dalam urin = (Na+ + K+ - Cl-)</p>
+            
+            <p><span class="highlight">AG urin + :</span> ⇩ [HCO3-] disebabkan kelainan ginjal (Renal Tubular Asidosis) atau pemakaian obat golongan inhibitor Carbonic Anhidrase (m: Asetazolamide)</p>
+            
+            <p><span class="highlight">AG urin - :</span> ⇩ [HCO3-] melalui usus atau enteritis.</p>
+        </div>
+        <div class="page-number">2</div>
+    </div>
+
+    <!-- HALAMAN 3 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">PERAN GINJAL & ASIDOSIS RESPIRATORIK</h1>
+            <p class="subtitle">Patofisiologi & Penatalaksanaan</p>
+        </div>
+        
+        <div class="content">
+            <h2>Ginjal sebagai Penyebab Asidosis Metabolik</h2>
+            
+            <p class="no-indent"><strong>Penyebab Asidosis Metabolik:</strong></p>
+            <ol>
+                <li>⇧ [H+] : asam laktat, asam keto, intoksikasi salisilat, intoksikasi alkohol</li>
+                <li>⇩[HCO3-] akibat terbuangnya melalui ginjal atau saluran cerna.</li>
+                <li>Retensi ion H+ (Sekresi ion H+ ⇩)</li>
+            </ol>
+            
+            <p>Peran ginjal memfasilitasi kelainan 2 dan 3.</p>
+            
+            <p>Misalnya RTA tipe II (gangguan reabsorpsi HCO3 di Tubulus Proximal), RTA tipe I (gangguan retensi H+ di Duktus Koligentes sel Prinsipal & sel Interkalasi) atau Penyakit Ginjal Kronis timbul retensi NH4 (ionH+) pada LFG <40mL/menit</p>
+            
+            <h3>Ginjal sebagai Penyebab Alkalosis Metabolik?</h3>
+            <p>Ginjal bukan sebagai penyebab</p>
+            <p>Ginjal memfasilitasi ⇧reabsorbsi HCO3- akibat ⇧sekresi H+ yang dipicu penyebab lain ke lumen tubulus → Alkalosis Metabolik.</p>
+            
+            <p class="no-indent"><strong>Penyebab Alkalosis Metabolik :</strong> Hipovolemia, Hipokalemia, Hipochloremia, dan ⇧Aktivitas RAAS</p>
+            
+            <div class="section-divider">❀ ❀ ❀</div>
+            
+            <h2>Asidosis Respiratorik</h2>
+            
+            <p>Gangguan asam-basa primer dimana PaCO2 ⇧ > yang diharapkan.</p>
+            <p>Produksi CO2 ⇧ namun ventilasi paru tidak mampu menguranginya.</p>
+            <p>Terbagi 2 : Akut dan Kronik.</p>
+            
+            <h3>Penyebab Asidosis Respiratorik</h3>
+            <p class="no-indent">Peningkatan kadar pCO2 (hiperkapnia) karena :</p>
+            <ul>
+                <li>Kelebihan CO2 dalam udara yang dihirup (misal : rebreathing)</li>
+                <li>Berkurangnya ventilasi alveolar</li>
+                <li>Meningkatnya produksi CO2 oleh tubuh.</li>
+            </ul>
+            
+            <h3>Penyakit Penyebab Asidosis Respiratorik</h3>
+            
+            <p><strong>A. Ventilasi alveolar yang tidak adekuat</strong></p>
+            <ul>
+                <li>Depresi Pusat Respirasi & problem SSP lainnya (Depresi SSP krn Opiat, Trauma SSP, Poliomielitis, dll)</li>
+                <li>Gangguan Saraf dan Otot Pernafasan (Sindrom Guillain-Barre, Myastenia Gravis, dll)</li>
+                <li>Gangguan Paru dan Dinding Dada (PPOK Eksaserb.Akut, Trauma Dada, Pneumotorak, dll)</li>
+                <li>Gangguan Saluran Nafas (Obstruksi Sal. Nafas, Spasme Laring, Asma, dll)</li>
+                <li>Faktor Eksternal (ventilasi mekanik yang tak adekuat)</li>
+            </ul>
+            
+            <p><strong>B. Produksi CO2 berlebihan</strong></p>
+            <p>Gangguan hiperkatabolik (hipertermia maligna)</p>
+            
+            <p><strong>C. Meningkatnya pemasukan CO2</strong></p>
+            <ul>
+                <li>Rebreathing CO2 yg diekspirasi</li>
+                <li>Penambahan CO2 yang diinspirasi dalam udara</li>
+                <li>Memasukkan CO2 dalam rongga tubuh (laparoskopi)</li>
+            </ul>
+        </div>
+        <div class="page-number">3</div>
+    </div>
+
+    <!-- HALAMAN 4 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">PATOFISIOLOGI & TATALAKSANA</h1>
+            <p class="subtitle">Asidosis Respiratorik & Alkalosis Respiratorik</p>
+        </div>
+        
+        <div class="content">
+            <h2>Patofisiologi Asidosis Respiratoris</h2>
+            
+            <p>⇧CO2 tubuh (metab.KH+Lemak) + Air ⇨ H2CO3</p>
+            
+            <p>Paru mengekskresi CO2 (volatile) melalui ventilasi ⇨ akumulasi asam volatile tidak terjadi</p>
+            
+            <p>Ventilasi Alveolar dikontrol Pusat Respirasi di Pons-Medulla (ada kemoreseptor untuk pH, pCO2 & PO2)</p>
+            
+            <p>Gangguan eliminasi CO2 (Asidosis Respiratoris) Akut dikompensasi dalam 2 langkah :</p>
+            <ol>
+                <li>⇧ [HCO3-] plasma (1mEq/L tiap ⇧ 10mmHg pCO2)</li>
+                <li>Kompensasi Ginjal : ⇧ekskresi H2CO3 & ⇧ reabsorpsi HCO3-</li>
+            </ol>
+            
+            <p class="no-indent"><strong>Nilai perubahan pH yang diharapkan:</strong></p>
+            <ul>
+                <li>Akut : ∆ pH= 0,008 x (40-pCO2)</li>
+                <li>Kronik: ∆ pH= 0,003 x (40-pCO2)</li>
+            </ul>
+            
+            <h3>Gambaran Klinik & Laboratorium</h3>
+            <p>Tergantung penyakit dasarnya</p>
+            <p>Hiperkapnia (ringan-berat) agak lambat bergejala</p>
+            <p class="no-indent">Keluhan yang mungkin : mudah lelah, lethargy, sakit kepala, cemas, sesak nafas, gangguan tidur/ngantuk</p>
+            <p>Keluhan tergantung :⇧ pCO2 serta ⇩ pH dan O2</p>
+            <p>Bila pCO2 makin tinggi ⇨ CO2 Narkosis (konfusio atau penurunan kesadaran) pada kasus akut</p>
+            <p>Pada pemeriksaan fisik : tidak spesifik (sianosis bisa terjadi pada hipoksemia berat)</p>
+            
+            <h3>Penatalaksanaan Asidosis Respiratoris</h3>
+            <ul>
+                <li>Terutama mengobati penyakit dasarnya</li>
+                <li>Koreksi cepat hiperkapnia (pCO2⇩) bisa berbahaya (menimbulkan alkalosis metabolik), jika sampai ke LCS (cairan serebrospinal) menimbulkan kejang</li>
+                <li>Koreksi dengan Na-Bikarbonat kadang masih dipakai dalam kondisi darurat (pH<7,0)</li>
+                <li>Terapi O2 sangat diperlukan memperbaiki ventilasi (biasanya hiperkapnia disertai hipoksemia), Pada PPOK lebih efektif dengan NIPPV (ventilasi mekanik non Invasif). Dosisnya kecil (O2 1-2L/menit untuk mencegah perburukan hipoventilasi jika dosis tinggi)</li>
+            </ul>
+            
+            <h3>Penatalaksanaan</h3>
+            <ul>
+                <li>Obat Gol.Bronkodilator (pada PPOK), obat Naloxone (antidotum pada intoksikasi opiat/putaw), obat Medroxyprogesterone (stimulasi pernafasan), obat Asetazolamide (diuretik yang ⇧ekskresi HCO3-) ⇨ terjadi alkalosis metabolik ⇨ stimulasi ventilasi</li>
+                <li>Obat Teofilin (Asma & PPOK) ⇨ ⇧ kerja diafragma & merangsang pusat ventilasi</li>
+                <li>Terapi Obesitas : diet + surgikal</li>
+                <li>Pencegahan : stop merokok (PPOK), diet (Obesitas), hati-hati pada pemakaian obat gol. Sedativum (mudah mendepresi ventilasi pernafasan)</li>
+            </ul>
+            
+            <div class="section-divider">❀ ❀ ❀</div>
+            
+            <h2>Alkalosis Respiratorik</h2>
+            
+            <p>Gangguan klinik karena hiperventilasi alveolar ⇨ ⇩ PaCO2 ⇨ ⇧ rasio HCO3-/pCO2, juga ⇧ pH</p>
+            
+            <p>Hipokapnia terjadi karena rangsangan yang tinggi terhadap paru untuk mengeluarkan CO2 drpd yang dimetabolisme di jaringan</p>
+            
+            <p class="no-indent"><strong>Alkalosis Respiratoris</strong></p>
+            <ol>
+                <li>Akut: PCO2 < normal, pH > normal</li>
+                <li>Kronik ; pCO2 < normal, pH normal atau +normal</li>
+            </ol>
+            
+            <p>Sering ditemukan pada penderita penyakit kritis atau dalam ventilasi mekanik</p>
+        </div>
+        <div class="page-number">4</div>
+    </div>
+
+    <!-- HALAMAN 5 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">ALKALOSIS RESPIRATORIK LANJUTAN</h1>
+            <p class="subtitle">Patofisiologi, Penyebab & Interpretasi AGD</p>
+        </div>
+        
+        <div class="content">
+            <h2>Patofisiologi Alkalosis Respiratoris</h2>
+            
+            <p>Gangguan ventilasi mempengaruhi eliminasi CO2 (asam volatile) ⇨ gangguan asam-basa</p>
+            
+            <p>Kemoreseptor (Otak & Badan Carotis) merangsang ion H+ mempengaruhi ventilasi mengatur pCO2, pO2 dan pH ⇨ ⇧pengeluaran CO2 (Hiperventilasi ⇨ Hipokapnia) & ⇩ ion H+.</p>
+            
+            <p>Hiperventilasi sering dihubungkan dengan dispnoe.</p>
+            
+            <h3>Patofisiologi</h3>
+            <p>Hipokapnia akut → ⇩ K+ dan fosfat → ⇧ pergeseran ion intraseluler dan ⇩ Ca, Na, Cl, dan HCO3-.</p>
+            
+            <p>Sesudah 2-6 jam hipokapnia akut → dikompensasi oleh ginjal dengan ⇩reabsorbsi HCO3-.</p>
+            
+            <p>Ginjal lebih berespon terhadap ⇩ PCO2 daripada ⇧ pH.</p>
+            
+            <p class="no-indent"><strong>Perubahan pH yg diharapkan pada alkalosis respiratorik :</strong></p>
+            <ul>
+                <li>Akut : 0,008x (40 – PCO2)</li>
+                <li>Kronik : 0,017x (40 – PCO2)</li>
+            </ul>
+            
+            <h3>Penyebab</h3>
+            
+            <p><strong>A. Hipoksia</strong></p>
+            <ul>
+                <li>Berkurangnya tekanan O2 inspirasi</li>
+                <li>Penyakit ketinggian</li>
+                <li>Ventilasi/perfusi tidak adekuat</li>
+                <li>Anemia berat.</li>
+            </ul>
+            
+            <p><strong>B. Gangguan yang berhubungan dengan susunan saraf pusat</strong></p>
+            <ul>
+                <li>Voluntary hiperventilation (anxietas, stress)</li>
+                <li>Penyakit-penyakit saraf : meningitis, ensefalitis</li>
+                <li>Stroke (perdarahan otak, infark)</li>
+                <li>Nyeri berat, Demam, Trauma, Tumor</li>
+            </ul>
+            
+            <p><strong>C. Obat-obatan/ hormon :</strong> Salisilat, Nikotin, Xanthin, Kehamilan, Hipertiroid</p>
+            
+            <p><strong>D. Penyakit Paru :</strong> Penyakit paru intertisial, Emboli paru, Edema paru, Pneumotorak/hematotorak, Pneumonia, aspirasi</p>
+            
+            <p><strong>E. Lain-lain :</strong> Penyakit hati kronik, Sengatan panas, Pemulihan dari asidosis metabolik, Septikemia Gram Negatif, Ventilasi mekanik berlebihan.</p>
+            
+            <h3>Gambaran Klinik dan Laboratorium</h3>
+            <ul>
+                <li>Gambaran klinik bergantung dari berat dan lamanya penyakit yg mendasari.</li>
+                <li>Hiperventilasi, Hipokapnia</li>
+                <li>Alkalemia : PCO2 < 35 mmHg, pH>7,45</li>
+                <li>Bila kompensasi: ekskresi HCO3- oleh ginjal ⇧.</li>
+                <li>Setiap ⇩10 mmHg PCO2 → terjadi kompensasi ⇩ HCO3- : akut : 2 meq/L, kronik : 5 meq/L</li>
+                <li>Infeksi : Leukositosis, bakteri pada sputum, darah, urin.</li>
+            </ul>
+            
+            <h3>Tatalaksana</h3>
+            <ul>
+                <li>Terapi darurat belum perlu meskipun pH 7,5.</li>
+                <li>Bila PCO2 dikoreksi cepat → terjadi asidosis metabolik karena efek kompensasi ginjal dgn ⇩ plasma HCO3-.</li>
+                <li>Sindroma Hiperventilasi : kantong udara (rebreathing) selama fase akut dan mengobati faktor psikologis.</li>
+                <li>Psikoterapi dan sedativum.</li>
+            </ul>
+        </div>
+        <div class="page-number">5</div>
+    </div>
+
+    <!-- HALAMAN 6 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">INTERPRETASI AGD & KESEIMBANGAN ASAM BASA</h1>
+            <p class="subtitle">Mekanisme Regulasi & Sistem Buffer</p>
+        </div>
+        
+        <div class="content">
+            <h2>Interpretasi Analisis Gas Darah</h2>
+            
+            <p><strong>Apakah pasien menderita asidemia/alkalemia?</strong></p>
+            <ul>
+                <li>jika pH<7,35 disebut asidemia</li>
+                <li>jika pH>7,45 disebut alkalemia</li>
+            </ul>
+            
+            <p><strong>Apakah masalah primer gangguan asam-basa dan bagaimana kompensasinya?</strong></p>
+            <ul>
+                <li>Pada Asidosis Metabolik : HCO3↙ → PaCO2↙</li>
+                <li>Pada Alkalosis Metabolik : HCO3↗ → PaCO2↗</li>
+                <li>Pada Asidosis Respiratoris : PaCO2↗ → HCO3↗</li>
+                <li>Pada Alkalosis Respiratoris: PaCO2↙ → HCO3↙</li>
+            </ul>
+            
+            <h3>Interpretasi (lanjutan)</h3>
+            
+            <p><strong>Kompensasi pada Asidosis Respiratoris :</strong></p>
+            <ol>
+                <li>Kompensasi Akut : Setiap ↗ 1kPa dari PaCO2 → ↗HCO3 sebesar 0,75x</li>
+                <li>Kompensasi Kronis : Setiap ↗ 1kPa dari PaCO2 → ↗HCO3 sebesar 3x</li>
+            </ol>
+            
+            <p><strong>Kompensasi pada Alkalosis Respiratoris :</strong></p>
+            <ol>
+                <li>Kompensasi Akut : Setiap ↙ 1kPa dari PaCO2 → ↙HCO3 sebesar 1,5x</li>
+                <li>Kompensasi Kronis : Setiap ↙ 1kPa dari PaCO2 → ↙HCO3 sebesar 3,5x</li>
+            </ol>
+            
+            <div class="section-divider">❀ ❀ ❀</div>
+            
+            <h2>KESEIMBANGAN ASAM BASA</h2>
+            <p style="text-align: center; font-style: italic;">DR dr Achdyat Premedi</p>
+            
+            <h3>Aktivitas Sel Optimal</h3>
+            <p>AKTIVITAS SEL OPTIMAL PADA pH 7,35 – 7,45</p>
+            <p>PERUBAHAN pH ↑ / ↓ → AKTIVITAS SEL TERGANGGU → DIPERLUKAN REGULASI</p>
+            
+            <p class="no-indent"><strong>MEKANISME REGULASI :</strong></p>
+            <ul>
+                <li>DILUTION</li>
+                <li>BUFFER</li>
+                <li>COMPENSATION</li>
+            </ul>
+            
+            <h3>Mengapa Pengaturan pH Tubuh Sangat Penting?</h3>
+            
+            <h3>Akibat Dari Asidosis Berat</h3>
+            
+            <p><strong>KARDIOVASKULER</strong></p>
+            <ul>
+                <li>GANGGUAN KONTRAKSI OTOT JANTUNG</li>
+                <li>DILATASI ARTERI, KONSTRIKSI VENA & SENTRALISASI VOLUME DARAH</li>
+                <li>PENINGKATAN TAHANAN VASKULAR PARU</li>
+                <li>PENURUNAN CURAH JANTUNG, TEKANAN DARAH ARTERI, DAN ALIRAN DARAH HATI DAN GINJAL</li>
+                <li>SENSITIF TERHADAP REENTRANT ARITMIA</li>
+                <li>MENGHAMBAT RESPON KARDIOVASKULER TERHADAP KATEKOLAMIN</li>
+            </ul>
+            
+            <p><strong>RESPIRASI</strong></p>
+            <ul>
+                <li>HIPERVENTILASI</li>
+                <li>PENURUNAN KEKUATAN OTOT NAPAS DAN MENYEBABKAN KELELAHAN OTOT</li>
+                <li>SESAK</li>
+            </ul>
+            
+            <p><strong>METABOLIK</strong></p>
+            <ul>
+                <li>PENINGKATAN KEBUTUHAN METABOLISME</li>
+                <li>RESISTENSI INSULIN</li>
+                <li>MENGHAMBAT GLIKOLISIS ANAEROB</li>
+                <li>PENURUNAN SINTESIS ATP</li>
+                <li>HIPERKALEMIA</li>
+                <li>PENINGKATAN DEGRADASI PROTEIN</li>
+            </ul>
+            
+            <p><strong>OTAK</strong></p>
+            <ul>
+                <li>PENGHAMBATAN METABOLISME DAN REGULASI VOLUME SEL OTAK</li>
+                <li>KOMA</li>
+            </ul>
+        </div>
+        <div class="page-number">6</div>
+    </div>
+
+    <!-- HALAMAN 7 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">AKIBAT ALKALOSIS & SISTEM BUFFER</h1>
+            <p class="subtitle">Mekanisme Kompensasi & Gangguan Asam Basa</p>
+        </div>
+        
+        <div class="content">
+            <h2>Akibat Dari Alkalosis Berat</h2>
+            
+            <p><strong>KARDIOVASKULER</strong></p>
+            <ul>
+                <li>KONSTRIKSI ARTERI</li>
+                <li>PENURUNAN ALIRAN DARAH KORONER</li>
+                <li>PENURUNAN AMBANG ANGINA</li>
+                <li>PREDISPOSISI TERJADINYA SUPRAVENTRIKULER DAN VENTRIKEL ARITMIA YANG REFRAKTER</li>
+            </ul>
+            
+            <p><strong>RESPIRASI</strong></p>
+            <ul>
+                <li>HIPOVENTILASI YANG AKAN MENJADI HIPERKARBI DAN HIPOKSEMIA</li>
+            </ul>
+            
+            <p><strong>METABOLIK</strong></p>
+            <ul>
+                <li>STIMULASI GLIKOLISIS ANAEROB DAN PRODUKSI ASAM ORGANIK</li>
+                <li>HIPOKALEMIA</li>
+                <li>PENURUNAN KONSENTRASI Ca TERIONISASI PLASMA</li>
+                <li>HIPOMAGNESIA DAN HIPOPHOSPHATEMIA</li>
+            </ul>
+            
+            <p><strong>OTAK</strong></p>
+            <ul>
+                <li>PENURUNAN ALIRAN DARAH OTAK</li>
+                <li>TETANI, KEJANG, LEMAH, DELIRIUM DAN STUPOR</li>
+            </ul>
+            
+            <h3>Sistem Buffer Dalam Tubuh</h3>
+            <ul>
+                <li>CARBONAT</li>
+                <li>PHOSPHATE</li>
+                <li>PROTEIN</li>
+                <li>HEMOGLOBIN</li>
+            </ul>
+            
+            <h3>Mekanisme Kompensasi</h3>
+            <ul>
+                <li>SISTEM RESPIRASI</li>
+                <li>SISTEM RENAL</li>
+            </ul>
+            
+            <h3>Gangguan Asam Basa</h3>
+            <p>NORMAL pH EKSTRASEL 7,35 – 7,45</p>
+            <p>DG RATIO H2CO3 : NaHCO3 = 1 : 20</p>
+            <p>↑ pH / Ratio H2CO3 : NaHCO3 = 1 : > 20 → ALKALOSIS</p>
+            <p>↓ pH ATAU RATIO H2CO3 : NaHCO3 = >1 : 20 / < → ASIDOSIS</p>
+            
+            <p class="no-indent"><strong>DAPAT TERJADI AKIBAT PROBLEM :</strong></p>
+            <ul>
+                <li>METABOLISME → ALKALOSIS / ASIDOSIS METABOLIK</li>
+                <li>RESPIRASI → ALKALOSIS / ASIDOSIS RESPIRATORIK</li>
+            </ul>
+            
+            <h2>Asidosis Metabolik</h2>
+            
+            <h3>Faktor Penyebab</h3>
+            <ul>
+                <li>DIARE</li>
+                <li>PENGELUARAN CAIRAN DARI FISTULA USUS</li>
+                <li>RENAL TUBULAR ASIDOSIS</li>
+                <li>DIABETES MELITUS</li>
+                <li>ALKOHOLIK KETOASIDOSIS</li>
+                <li>↑ METABOLISME ANAEROB</li>
+            </ul>
+            
+            <h3>Tanda dan Gejala</h3>
+            <ul>
+                <li>Nyeri kepala, bingung, mengamuk</li>
+                <li>↑ kecepatan dan kedalaman pernafasan dan akan hilang setelah HCO3 sangat rendah</li>
+                <li>Mual dan muntah</li>
+                <li>Vasodilatasi perifer : kemerahan dan pada rabaan menjadi hangat</li>
+                <li>↓ PCO2 jika pH < 7,1</li>
+                <li>Hasil analisis gas darah arteri : pH < 7,35 ; HCO3 < 22 mEq/L ; PCO2 < 35 mmHg</li>
+                <li>BE < -2</li>
+                <li>↑ serum kalium (kecuali pada diare atau renal tubular akut)</li>
+            </ul>
+        </div>
+        <div class="page-number">7</div>
+    </div>
+
+    <!-- HALAMAN 8 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">ALKALOSIS METABOLIK & ASIDOSIS RESPIRATORIK</h1>
+            <p class="subtitle">Faktor Penyebab, Tanda & Gejala</p>
+        </div>
+        
+        <div class="content">
+            <h2>Alkalosis Metabolik</h2>
+            
+            <h3>Faktor Penyebab</h3>
+            <ul>
+                <li>MUNTAH-MUNTAH</li>
+                <li>HIPERALDOSTERONISM : CUSHING SYNDROME</li>
+                <li>KEHILANGGAN KALIUM AKIBAT PENGGUNAAN DIURETIK (FUROSEMIDE, THIAZIDE)</li>
+                <li>INTAKE ANTASIDA YANG MENGANDUNG BIKARBONAT</li>
+                <li>PEMBERIAN NaHCO3 SECARA PARENTERAL PADA TINDAKAN RJP</li>
+            </ul>
+            
+            <h3>Tanda dan Gejala</h3>
+            <ul>
+                <li>Merupakan tanda ↓ ionisasi kalsium</li>
+                <li>Pusing : kesemutan pada jari tangan dan jari kaki ; parasthesia sekitar mulut ; spasme corpopedal ; hipertonik otot</li>
+                <li>↓ ventilasi (sbg mekanisme kompensasi)</li>
+                <li>Hasil analisis gas darah arteri : pH > 7,45 ; HCO3 > 28 mEq/L ; PaCO2 > 45 mmHg ; BE > + 2</li>
+                <li>Serum Kalium rendah</li>
+            </ul>
+            
+            <h2>Asidosis Respiratorik</h2>
+            
+            <h3>Faktor Penyebab</h3>
+            
+            <p><strong>ASIDOSIS RESPIRATORIK AKUT :</strong></p>
+            <p>EDEMA PARU AKUT, ASPIRASI BENDA ASING, ATELEKTASIS, PNEUMOTHORAKS, HEMOTHORAKS, OVERDOSIS OBAT SEDATIVE ATAU ANESTESI, CARDIAC ARREST, PNEUMONIA BERAT, PEMASANGAN VENTILATOR YANG TIDAK TEPAT</p>
+            
+            <p><strong>ASIDOSIS RESPIRATORIK KRONIS :</strong></p>
+            <p>EMPHYSEMA, FIBROSIS, BRONKIEKTASIS, ASTMA, BRONKHIALE</p>
+            
+            <p><strong>FAKTOR – FAKTOR YANG MENYEBABKAN HIPOVENTILASI :</strong></p>
+            <p>OBESITAS, PASCA PEMBEDAHAN PADA ABDOMEN ATAU THORAKS, TRAUMA THORAKS, DISTENSI ABDOMEN</p>
+            
+            <h3>Tanda dan Gejala</h3>
+            
+            <p><strong>ASIDOSIS RESPIRATORIK AKUT</strong></p>
+            <ul>
+                <li>Perasaan penuh pada kepala akibat vasodilatasi dan ↑ aliran darah cerebrovaskuler terutama jika PaCO2 > 60 mmHg, pusing, palpitasi, twitching otot, convulsion, kulit hangat, kemerahan, ↓ kesadaran, fibrilasi ventrikel b.d hiperkalemi</li>
+                <li>Pada analisis gas darah arteri : pH < 7,35 ; PaCO2 > 45 mmHg ; HCO3 normal atau sedikit ↑</li>
+            </ul>
+            
+            <p><strong>ASIDOSIS RESPIRATORIK KRONIS</strong></p>
+            <ul>
+                <li>lesu, nyeri kepala tanda/gejala dari penyakit yang mendasari</li>
+                <li>pada analisis gas darah : pH sedikit dibawah normal atau pada batas normal bawah ; PaCO2 > 45 mmHg (primer) ; HCO3 > 28 (kompensasi)</li>
+            </ul>
+            
+            <h2>Alkalosis Respiratorik</h2>
+            
+            <h3>Faktor Penyebab</h3>
+            <p>Faktor yang menyebabkan hiperventilasi → kehilangan CO2 diantaranya :</p>
+            <ul>
+                <li>Kecemasan, hipoksemia, demam tinggi</li>
+                <li>Intoksikasi salisilat</li>
+                <li>Lesi pada SSP termasuk pusat pengatur respirasi</li>
+                <li>Emboli paru, Tiroksikosis</li>
+                <li>Penggunaan ventilator yang tidak tepat</li>
+            </ul>
+        </div>
+        <div class="page-number">8</div>
+    </div>
+
+    <!-- HALAMAN 9 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">TANDA GEJALA & ASKEP ASAM BASA</h1>
+            <p class="subtitle">Pengkajian, Diagnosa & Intervensi Keperawatan</p>
+        </div>
+        
+        <div class="content">
+            <h2>Tanda dan Gejala Alkalosis Respiratorik</h2>
+            <ul>
+                <li>Sakit kepala ringan akibat vasokontriksi dan ↓ aliran darah cerebrovaskuler</li>
+                <li>Tidak mampu berkonsentrasi</li>
+                <li>Tinitus, palpitasi, berkeringat, mulut kering, gemetar, nyeri precordial, mual dan muntah, nyeri epigastrium</li>
+                <li>Penglihatan kabur, bingung, dan ↓ tingkat kesadaran</li>
+                <li>Hasil analisis gas darah arteri : pH > 7,45 ; PaCO2 < 35 mmHg ; HCO3 < 22 mEq/L</li>
+            </ul>
+            
+            <h2>Pengkajian</h2>
+            <p><strong>Riwayat Keperawatan :</strong></p>
+            <ul>
+                <li>Riwayat intake cairan dan makanan 24 jam yang lalu</li>
+                <li>Berat badan sebelum sakit</li>
+                <li>Riwayat kehilangan cairan : diare, muntah – muntah</li>
+                <li>Keluhan yang berhubungan dengan < / > cairan, elektrolit</li>
+                <li>Adanya penyakit kronis / pengobatan yang mengganggu keseimbangan cairan dan elektrolit</li>
+            </ul>
+            
+            <h3>Pemeriksaan Tanda-Tanda Klinis</h3>
+            <ul>
+                <li>Berat badan, vital sign</li>
+                <li>Jumlah intake dan output dalam 24 jam</li>
+                <li>Kulit : suhu, kelembaban, turgor, warna</li>
+                <li>Rongga mulut : membran mukosa, lidah, saliva</li>
+                <li>Mata : penglihatan, edema, bola mata</li>
+                <li>Vena jugularis, capillary refilling time</li>
+                <li>Tanda-tanda neurologi : tingkat kesadaran</li>
+            </ul>
+            
+            <h3>Pemeriksaan Fisik</h3>
+            <ul>
+                <li>Kulit : suhu, kelembaban, warna, turgor</li>
+                <li>Rongga mulut : membran mukosa, lidah, saliva</li>
+                <li>Mata : penglihatan, edema pada kelopak mata, tekanan bola mata</li>
+                <li>Kardiovaskuler : vena jugularis, CRT</li>
+                <li>Paru-paru : suara nafas, perkusi paru, pengembangan paru, kecepatan</li>
+                <li>Neurologis : tingkat kesadaran</li>
+            </ul>
+            
+            <h2>Diagnosa Keperawatan</h2>
+            <ul>
+                <li>Aktual/resiko gangguan pola nafas</li>
+                <li>Aktual/resiko gangguan pertukaran gas</li>
+                <li>Aktual/resiko penurunan perfusi serebral</li>
+                <li>Aktual/resiko tinggi disritmia</li>
+                <li>Aktual/resiko peningkatan tekanan intrakranial</li>
+                <li>Kekurangan cairan</li>
+                <li>Kelebihan volume cairan</li>
+                <li>Gangguan keseimbangan elektrolit</li>
+                <li>Intoleransi aktivitas</li>
+            </ul>
+        </div>
+        <div class="page-number">9</div>
+    </div>
+
+    <!-- HALAMAN 10 -->
+    <div class="page">
+        <div class="header">
+            <div class="flower-deco"></div>
+            <div class="cinnamoroll-deco"></div>
+            <h1 class="main-title">INTERVENSI KEPERAWATAN</h1>
+            <p class="subtitle">& Ringkasan Gangguan Keseimbangan Asam Basa</p>
+        </div>
+        
+        <div class="content">
+            <h2>Intervensi Keperawatan</h2>
+            <ul>
+                <li>Melakukan pengkajian secara cepat dan tepat</li>
+                <li>Mencari faktor penyebab</li>
+                <li>Istirahatkan klien dengan posisi semi fowler</li>
+                <li>Evaluasi perubahan tingkat kesadaran, catat sianosis dan perubahan warna kulit, termasuk membran mukosa dan kuku, evaluasi sistem kardiovaskuler dan respirasi</li>
+                <li>Pantau tanda-tanda vital tiap 4 jam</li>
+                <li>Pemberian oksigen sesuai indikasi</li>
+                <li>Pertahankan pemberian cairan yang adekuat</li>
+                <li>Mengukur intake output</li>
+                <li>Manajemen lingkungan</li>
+                <li>Kolaborasi untuk pemeriksaan analisa gas darah, elektrolit, kadar hemoglobin</li>
+                <li>Kolaborasi pemilihan pemberian cairan dan koreksi gangguan keseimbangan asam basa dan elektrolit.</li>
+                <li>Kolaborasi pemberian obat-obatan dan ventilasi mekanik</li>
+            </ul>
+            
+            <div class="section-divider">❀ ❀ ❀</div>
+            
+            <h2>Ringkasan Gangguan Keseimbangan Asam Basa</h2>
+            
+            <table>
+                <tr>
+                    <th>DISORDER</th>
+                    <th>pH</th>
+                    <th>PRIMER</th>
+                    <th>RESPON KOMPENSASI</th>
+                </tr>
+                <tr>
+                    <td>ASIDOSIS METABOLIK</td>
+                    <td>↓</td>
+                    <td>HCO3 ↓</td>
+                    <td>PCO2 ↓</td>
+                </tr>
+                <tr>
+                    <td>ALKALOSIS METABOLIK</td>
+                    <td>↑</td>
+                    <td>HCO3 ↑</td>
+                    <td>PCO2 ↑</td>
+                </tr>
+                <tr>
+                    <td>ASIDOSIS RESPIRATORIK</td>
+                    <td>↓</td>
+                    <td>PCO2 ↑</td>
+                    <td>HCO3 ↑</td>
+                </tr>
+                <tr>
+                    <td>ALKALOSIS RESPIRATORIK</td>
+                    <td>↑</td>
+                    <td>PCO2 ↓</td>
+                    <td>HCO3 ↓</td>
+                </tr>
+            </table>
+            
+            <h3>Nilai Analisis Gas Darah (AGD) Normal</h3>
+            
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Nilai</th>
+                    <th>Keterangan</th>
+                </tr>
+                <tr>
+                    <td>pH</td>
+                    <td>7,4 +/- 0,05</td>
+                    <td>Keasaman</td>
+                </tr>
+                <tr>
+                    <td>PaO2</td>
+                    <td>90 +/- 10</td>
+                    <td>Oksigenasi</td>
+                </tr>
+                <tr>
+                    <td>PaCO2</td>
+                    <td>40 +/- 5</td>
+                    <td>Mekanisme respirasi</td>
+                </tr>
+                <tr>
+                    <td>HCO3</td>
+                    <td>24 +/- 2</td>
+                    <td>Mekanisme metabolik</td>
+                </tr>
+                <tr>
+                    <td>SaO2</td>
+                    <td>97 +/- 3</td>
+                    <td>Oksigenasi
